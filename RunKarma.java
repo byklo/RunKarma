@@ -29,11 +29,11 @@ public final class RunKarma {
 		ModuleValidator moduleValidator = new ModuleValidator(args);
 
 		// see if module has karma tests to run
-		try{
-			moduleValidator.checkModule();
-		}catch(FileNotFoundException e){
-			return;
-		}
+		// try{
+		// 	moduleValidator.checkModule();
+		// }catch(FileNotFoundException e){
+		// 	return;
+		// }
 
 		// makes sure arguments are supplied
 		try{
@@ -50,7 +50,7 @@ public final class RunKarma {
 		for(int i=0; i<args.length; i++)
 		{
 			input = args[i];
-			moduleDir = "../" + input + "/src/test/ts/karma/";
+			moduleDir = "../AHCloud/Src/" + input + "/src/test/ts/karma/";
 			modules[i] = new AhModule(input, moduleDir);
 			modules[i].start();
 		}
@@ -87,8 +87,8 @@ public final class RunKarma {
 		}
 
 		// copies karma.config.js and edits it.
-		Path copy = Paths.get("../karma.conf.js");
-		Path paste = Paths.get("../build/karma/karma.conf.js");
+		Path copy = Paths.get("../AHCloud/Src/karma.conf.js");
+		Path paste = Paths.get("../AHCloud/Src/build/karma/karma.conf.js");
 
 		ConfigGenerator configGen = new ConfigGenerator(copy, paste);
 
@@ -105,7 +105,7 @@ public final class RunKarma {
 			return;
 		}
 
-		karmaCommand.addArg("../build/karma/karma.conf.js");
+		karmaCommand.addArg("../AHCloud/Src/build/karma/karma.conf.js");
 		String executeKarma = karmaCommand.gen();
 
 		// run karma
@@ -127,21 +127,21 @@ public final class RunKarma {
 		}
 
 		// copies test results
-		try{
-			Path testResults = Paths.get("../build/karma/test-results.xml");
+		// try{
+		// 	Path testResults = Paths.get("../build/karma/test-results.xml");
 
-            new File("build/karma").mkdirs();
+  //           new File("build/karma").mkdirs();
 
-			Path resultsDestination = Paths.get("build/karma/test-results.xml");
+		// 	Path resultsDestination = Paths.get("build/karma/test-results.xml");
 
-			Files.copy(testResults, resultsDestination, StandardCopyOption.REPLACE_EXISTING);
-		}catch(IOException e){
-			// LOGGER.error("Could not copy " + args[0] + "'s test-results.xml", e);
-			System.out.println("Could not copy " + args[0] + "'s test-results.xml", e);
-		}
+		// 	Files.copy(testResults, resultsDestination, StandardCopyOption.REPLACE_EXISTING);
+		// }catch(IOException e){
+		// 	// LOGGER.error("Could not copy " + args[0] + "'s test-results.xml", e);
+		// 	System.out.println("Could not copy " + args[0] + "'s test-results.xml" + e);
+		// }
 
 		// delete build files
-		File buildDir = new File("../build/karma");
+		File buildDir = new File("../AHCloud/Src/build/karma");
 
 		String[] fileList = buildDir.list();
 

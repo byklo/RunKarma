@@ -54,7 +54,7 @@ public class AhModule implements Runnable {
 					File[] filesInFolder = d.listFiles();
 					for(File f : filesInFolder)
 					{
-						String outputName = "../build/karma/" + f.getName().substring(0, f.getName().length()-3) + ".js";
+						String outputName = "../AHCloud/Src/build/karma/" + f.getName().substring(0, f.getName().length()-3) + ".js";
 						String arguments = outputName + " " + f.getAbsolutePath();
 
 						tsc.addArg(arguments);
