@@ -1,7 +1,7 @@
-package com.hubhead.support;
+// package com.hubhead.support;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+// import org.slf4j.Logger;
+// import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.util.*;
 
@@ -13,7 +13,7 @@ public class AhModule implements Runnable {
 	private boolean status;
 	private int compileErrorMsgs;
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(AhModule.class.getName());
+	// private static final Logger LOGGER = LoggerFactory.getLogger(AhModule.class.getName());
 
 	AhModule(String name, String dir){
 		threadName = name;
@@ -79,7 +79,8 @@ public class AhModule implements Runnable {
 				process.waitFor();
 			}
 
-			LOGGER.info("Compiled Typescript: " + threadName);
+			// LOGGER.info("Compiled Typescript: " + threadName);
+			System.out.println("Compiled Typescript: " + threadName);
 
 			for(Streamer stream : tscOutputs){
 				compileErrorMsgs += stream.getErrorCount();
@@ -88,7 +89,8 @@ public class AhModule implements Runnable {
 			status = true;
 
 		}catch(InterruptedException | IOException e){
-			LOGGER.info("Failed to compile: " + threadName + " -> " + e);
+			// LOGGER.info("Failed to compile: " + threadName + " -> " + e);
+			System.out.println("Failed to compile: " + threadName + " -> " + e);
 		}
 	}
 

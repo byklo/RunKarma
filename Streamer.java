@@ -1,7 +1,7 @@
-package com.hubhead.support;
+// package com.hubhead.support;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+// import org.slf4j.Logger;
+// import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.util.*;
 import java.nio.file.*;
@@ -11,7 +11,7 @@ public class Streamer {
 	private final Process process;
 	private int errorCount;
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(Streamer.class.getName());
+	// private static final Logger LOGGER = LoggerFactory.getLogger(Streamer.class.getName());
 
 	Streamer(Process p){
 		process = p;
@@ -24,7 +24,8 @@ public class Streamer {
 				InputStreamReader reader = new InputStreamReader(process.getInputStream());
 				Scanner scan = new Scanner(reader);
 				while (scan.hasNextLine()) {
-					LOGGER.info(scan.nextLine());
+					// LOGGER.info(scan.nextLine());
+					System.out.println(scan.nextLine());
 				}
 			}
 		}).start();
@@ -36,7 +37,8 @@ public class Streamer {
 				InputStreamReader reader = new InputStreamReader(process.getErrorStream());
 				Scanner scan = new Scanner(reader);
 				while (scan.hasNextLine()) {
-					LOGGER.error(scan.nextLine());
+					// LOGGER.error(scan.nextLine());
+					System.out.println(scan.nextLine());
 					errorCount++;
 				}
 			}

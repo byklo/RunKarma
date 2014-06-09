@@ -1,7 +1,7 @@
-package com.hubhead.support;
+// package com.hubhead.support;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+// import org.slf4j.Logger;
+// import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.util.*;
 import java.nio.file.*;
@@ -9,7 +9,7 @@ import java.nio.file.*;
 public class ConfigGenerator {
 	private final Path copyPath;
 	private final Path pastePath;
-	private static final Logger LOGGER = LoggerFactory.getLogger(ConfigGenerator.class.getName());
+	// private static final Logger LOGGER = LoggerFactory.getLogger(ConfigGenerator.class.getName());
 
 	ConfigGenerator(Path copy, Path paste)
 	{
@@ -20,9 +20,11 @@ public class ConfigGenerator {
 	public void create(){
 		try{
 			Files.copy(copyPath, pastePath, StandardCopyOption.REPLACE_EXISTING);
-			LOGGER.info("Created build/karma/karma.conf.js");
+			// LOGGER.info("Created build/karma/karma.conf.js");
+			System.out.println("Created build/karma/karma.conf.js");
 		}catch(IOException e){
-			LOGGER.info("Failed to create build/karma/karma.conf.js");
+			// LOGGER.info("Failed to create build/karma/karma.conf.js");
+			System.out.println("Failed to create build/karma/karma.conf.js");
 			// System.exit(0);
 			return;
 		}
@@ -53,11 +55,13 @@ public class ConfigGenerator {
 			writer.write(newText);
 			writer.close();
 
-			LOGGER.info("Fixed build/karma/karma.conf.js");
+			// LOGGER.info("Fixed build/karma/karma.conf.js");
+			System.out.println("Fixed build/karma/karma.conf.js");
 		}
 		catch(IOException e)
 		{
-			LOGGER.info("Failed to fix build/karma/karma.conf.js");
+			// LOGGER.info("Failed to fix build/karma/karma.conf.js");
+			System.out.println("Failed to fix build/karma/karma.conf.js");
 			// System.exit(0);
 			return;
 		}

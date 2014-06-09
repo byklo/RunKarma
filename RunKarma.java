@@ -1,7 +1,7 @@
-package com.hubhead.support;
+// package com.hubhead.support;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+// import org.slf4j.Logger;
+// import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,7 +20,7 @@ import java.nio.file.StandardCopyOption;
 
 public final class RunKarma {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(RunKarma.class.getName());
+	// private static final Logger LOGGER = LoggerFactory.getLogger(RunKarma.class.getName());
 
 	private RunKarma(){}
 
@@ -76,7 +76,8 @@ public final class RunKarma {
 		for(AhModule module : modules){
 			compileMsgs += module.getErrorMsgsCount();
 			if(module.getErrorMsgsCount() >= 1){
-				LOGGER.error(module.getName() + " compiled with errors.");
+				// LOGGER.error(module.getName() + " compiled with errors.");
+				System.out.println(module.getName() + " compiled with errors.");
 			}
 		}
 
@@ -99,7 +100,8 @@ public final class RunKarma {
 		try{
 			karmaCommand = new CommandGenerator("karma start");
 		}catch(IllegalStateException e){
-			LOGGER.info("Could not identify OS.");
+			// LOGGER.info("Could not identify OS.");
+			System.out.println("Could not identify OS.");
 			return;
 		}
 
@@ -109,7 +111,8 @@ public final class RunKarma {
 		// run karma
 		try{
 
-			LOGGER.info("Starting karma.");
+			// LOGGER.info("Starting karma.");
+			System.out.println("Starting karma.");
 
 			Process p = Runtime.getRuntime().exec(executeKarma);
 
@@ -119,7 +122,8 @@ public final class RunKarma {
 			p.waitFor();
 
 		}catch(IOException | InterruptedException e){
-			LOGGER.info("Failed to run karma: " + e);
+			// LOGGER.info("Failed to run karma: " + e);
+			System.out.println("Failed to run karma: " + e);
 		}
 
 		// copies test results
@@ -132,7 +136,8 @@ public final class RunKarma {
 
 			Files.copy(testResults, resultsDestination, StandardCopyOption.REPLACE_EXISTING);
 		}catch(IOException e){
-			LOGGER.error("Could not copy " + args[0] + "'s test-results.xml", e);
+			// LOGGER.error("Could not copy " + args[0] + "'s test-results.xml", e);
+			System.out.println("Could not copy " + args[0] + "'s test-results.xml", e);
 		}
 
 		// delete build files

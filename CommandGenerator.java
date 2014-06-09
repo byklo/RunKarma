@@ -1,7 +1,7 @@
-package com.hubhead.support;
+// package com.hubhead.support;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+// import org.slf4j.Logger;
+// import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.util.*;
 import java.nio.file.*;
@@ -15,7 +15,7 @@ public class CommandGenerator {
 
 	private final OsChecker osChecker = new OsChecker();
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(CommandGenerator.class.getName());
+	// private static final Logger LOGGER = LoggerFactory.getLogger(CommandGenerator.class.getName());
 
 	// constructor checks os, adds prefix if necessary. adds the basecommand as well
 	CommandGenerator(String newCommand) throws IllegalStateException{
@@ -29,7 +29,8 @@ public class CommandGenerator {
 			osPrefix = "";
 		}
 		else{
-			LOGGER.info("Could not identify OS.");
+			// LOGGER.info("Could not identify OS.");
+			System.out.println("Could not identify OS.");
 			throw new IllegalStateException("Could not identify OS.");
 		}
 
