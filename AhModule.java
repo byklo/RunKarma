@@ -50,7 +50,7 @@ public class AhModule implements Runnable {
 
 			for(File d : searchResults)
 			{
-				if(d.isDirectory()){
+				if(d.isDirectory() && !d.getName().matches("resources")){
 					File[] filesInFolder = d.listFiles();
 					for(File f : filesInFolder)
 					{
